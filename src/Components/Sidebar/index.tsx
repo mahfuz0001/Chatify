@@ -7,7 +7,7 @@ import useSettingsStore from "../../Store/settingsStore";
 const Sidebar = () => {
   const profile = useAuthStore((state) => state.profile);
   const setSettingsActive = useSettingsStore(
-    (state) => state.setSettingsActive,
+    (state) => state.setSettingsActive
   );
   const isSettingsActive = useSettingsStore((state) => state.isSettingsActive);
 

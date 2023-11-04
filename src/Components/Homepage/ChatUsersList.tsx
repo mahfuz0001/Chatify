@@ -37,10 +37,10 @@ const ChatUsersList = () => {
   const isLoading = useRoomStore((state) => state.isLoading);
   const session = useAuthStore((state) => state.session);
   const isContactResearchActive = useSettingsStore(
-    (state) => state.isContactResearchActive,
+    (state) => state.isContactResearchActive
   );
   const toggleContactResearch = useSettingsStore(
-    (state) => state.toggleContactResearch,
+    (state) => state.toggleContactResearch
   );
   const [isIpad] = useMediaQuery("(max-width: 1025px)");
 
@@ -91,7 +91,24 @@ const ChatUsersList = () => {
             <Spinner color={"accentColor"} size={"lg"} />
           </Center>
         ) : (
-          <Flex flexDir="column" flex="1" overflowY="scroll" gap="2">
+          <Flex
+            flexDir="column"
+            flex="1"
+            overflowY="scroll"
+            gap="2"
+            css={{
+              "&::-webkit-scrollbar": {
+                width: "4px",
+                backgroundColor: "transparent",
+              },
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: "orange",
+              },
+              "&::-webkit-scrollbar-track": {
+                backgroundColor: "transparent",
+              },
+            }}
+          >
             {rooms.length >= 1 ? (
               rooms
                 .filter((item) => item.messages.length > 0)

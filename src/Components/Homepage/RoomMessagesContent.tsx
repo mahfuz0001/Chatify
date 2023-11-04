@@ -39,7 +39,7 @@ const RoomMessagesContent = () => {
   const session = useAuthStore((state) => state.session);
   const profile = useAuthStore((state) => state.profile);
   const updateViewRoomMessages = useRoomStore(
-    (state) => state.updateViewRoomMessages,
+    (state) => state.updateViewRoomMessages
   );
   const channels = supabase.getChannels();
   const toast = useToast();
@@ -47,7 +47,7 @@ const RoomMessagesContent = () => {
   const actualRoom = rooms.find((roomState) => roomState.room === roomId);
   const isUserBlocked = useIsUserBlocked(actualRoom?.room);
   const getChannelRoom = channels.find(
-    (chan) => chan.topic.split(":")[1] === `room${actualRoom?.room.toString()}`,
+    (chan) => chan.topic.split(":")[1] === `room${actualRoom?.room.toString()}`
   );
 
   const unblockUser = async () => {
@@ -92,14 +92,14 @@ const RoomMessagesContent = () => {
           dateMessage.messages.filter((message) => {
             if (message.user !== session?.user.id)
               return message.view === false;
-          }),
+          })
         )
         .filter((mess) => mess.length > 0)
         .map((mapArray) =>
           mapArray.map(({ images, ...rest }) => {
             const newMessage = { ...rest };
             messagesFormatted.push(newMessage);
-          }),
+          })
         );
     }
 
@@ -166,7 +166,19 @@ const RoomMessagesContent = () => {
         pb="1"
         height="full"
         width="full"
-        overflow="scroll"
+        overflowY="scroll"
+        css={{
+          "&::-webkit-scrollbar": {
+            width: "4px",
+            backgroundColor: "transparent",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: "orange",
+          },
+          "&::-webkit-scrollbar-track": {
+            backgroundColor: "transparent",
+          },
+        }}
       >
         {actualRoom?.messages.map((dateMessage) => (
           <Flex flexDir="column" w="full" my="1" px="4" key={dateMessage.id}>

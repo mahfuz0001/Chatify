@@ -46,7 +46,7 @@ const RoomMessagesBottom = () => {
   const addMessageToRoom = useRoomStore((state) => state.addMessageToRoom);
   const isUserBlocked = useIsUserBlocked(actualRoom?.room);
   const getChannelRoom = channels.find(
-    (chan) => chan.topic.split(":")[1] === `room${id.toString()}`,
+    (chan) => chan.topic.split(":")[1] === `room${id.toString()}`
   );
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -65,7 +65,7 @@ const RoomMessagesBottom = () => {
       isBlocked: isUserBlocked.isRoomBlocked,
     };
     try {
-      if (content === "") throw new Error("You need to write something :)");
+      if (content === "") throw new Error("Write something bitch!!!");
       const message = await createMessage(newMessage);
       addMessageToRoom(message);
       if (getChannelRoom !== undefined && !!message?.isBlocked === false) {

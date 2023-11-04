@@ -31,7 +31,7 @@ const SearchUsersList = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchText, setSearchText] = useState("");
   const toggleContactResearch = useSettingsStore(
-    (state) => state.toggleContactResearch,
+    (state) => state.toggleContactResearch
   );
   const setProfiles = useSettingsStore((state) => state.setProfiles);
   const contactProfiles = useSettingsStore((state) => state.contactProfiles);
@@ -109,7 +109,7 @@ const SearchUsersList = () => {
           initial="hidden"
           animate="show"
           height="auto"
-          overflowY="scroll"
+          overflow="hidden"
         >
           {contactProfiles.map((profile) => (
             <SearchUsersListItem key={profile.id} profile={profile} />

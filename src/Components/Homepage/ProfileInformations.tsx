@@ -39,7 +39,7 @@ const ProfileInformations = () => {
   const session = useAuthStore((state) => state.session);
   const profile = useAuthStore((state) => state.profile);
   const setIsProfileActive = useSettingsStore(
-    (state) => state.setIsProfileActive,
+    (state) => state.setIsProfileActive
   );
   const isProfileActive = useSettingsStore((state) => state.isProfileActive);
   const rooms = useRoomStore((state) => state.rooms);
@@ -51,7 +51,7 @@ const ProfileInformations = () => {
   const isChat = id !== undefined;
   const getChannelRoom = useMemo(() => {
     const channelRoom = channels.find(
-      (chan) => chan.topic.split(":")[1] === `room${id?.toString()}`,
+      (chan) => chan.topic.split(":")[1] === `room${id?.toString()}`
     );
     if (channelRoom) return channelRoom;
     return null;
@@ -60,7 +60,7 @@ const ProfileInformations = () => {
   const [isIpad] = useMediaQuery("(max-width: 1025px)");
 
   const actualRoom = rooms.find(
-    (roomState) => roomState.room === parseInt(id!),
+    (roomState) => roomState.room === parseInt(id!)
   );
 
   if (!actualRoom) return <></>;
@@ -241,7 +241,7 @@ const ProfileInformations = () => {
           flex="1"
           spacing="4"
           h="full"
-          overflowY="scroll"
+          overflowY="hidden"
           whiteSpace={"nowrap"}
         >
           <Center
