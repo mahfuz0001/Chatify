@@ -17,9 +17,9 @@ const AppTitle = ({ size, pb }: Props) => {
       pb={pb ?? "2"}
       fontFamily="heading"
     >
-      Chat
+      Og{" "}
       <Text as="span" fontWeight={"thin"}>
-        More
+        Chatify
       </Text>
     </Heading>
   );
