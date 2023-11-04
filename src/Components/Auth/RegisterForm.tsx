@@ -30,7 +30,7 @@ const validationSchema = yup
       .max(20, "Password must be at most 20 characters")
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$/,
-        "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+        "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
       )
       .required("Password is required"),
     email: yup
@@ -86,8 +86,7 @@ const RegisterForm = () => {
     } catch (error) {
       toast({
         title: "Account error.",
-        description:
-          "There was a problem with the registration. Please try again.",
+        description: "Check your Email to confirm this registration. dummass!",
         status: "error",
         duration: 3000,
         isClosable: true,

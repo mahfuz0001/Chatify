@@ -16,7 +16,7 @@ const Register: React.FC = () => {
         background="headerMenuColor"
         borderRadius={"3xl"}
       >
-        <Image src={Logo} alt="ChatMore Logo" />
+        <Image src={Logo} alt="Og Chatify Logo" />
       </Center>
       <Box maxWidth="md" w="100%">
         <RegisterForm />

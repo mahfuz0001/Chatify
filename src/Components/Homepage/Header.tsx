@@ -16,7 +16,7 @@ const Header = () => {
     >
       <AppTitle pb="0" size="1.2rem" />
       <Box w="30px" h="30px">
-        <Image src={Logo} alt="ChatMore Logo" />
+        <Image src={Logo} alt="Og Chatify Logo" />
       </Box>
     </Flex>
   );

@@ -1,4 +1,4 @@
-# ChatMore
+# Og Chatify
 
 This project is a chatapp made in React with Typescript. The ultimate goal of this project was to discover Typescript and use Redux/Zustand. Also use and discover Supabase, as an online database to manage users and authentication.
 
