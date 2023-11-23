@@ -9,7 +9,7 @@ import {
   InputRightElement,
   useToast,
 } from "@chakra-ui/react";
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { BsSend } from "react-icons/bs";
 import { IoImagesSharp } from "react-icons/io5";
 import { useParams } from "react-router";
@@ -19,6 +19,7 @@ import { supabase } from "../../supabaseClient";
 import useIsUserBlocked from "../Hooks/useIsUserBlocked";
 import { Controller, useForm } from "react-hook-form";
 import { createImageMessage, createMessage } from "../../Services/APIs";
+import Picker from "emoji-picker-react";
 
 interface FormData {
   message: string;
@@ -38,6 +39,12 @@ const RoomMessagesBottom = () => {
   const toast = useToast();
   const rooms = useRoomStore((state) => state.rooms);
   const session = useAuthStore((state) => state.session);
+
+  const { register, getValues } = useForm();
+
+  const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState([]);
+  const [pickEmoji, setPickEmoji] = useState(false);
 
   if (!id) return <></>;
 
@@ -168,6 +175,21 @@ const RoomMessagesBottom = () => {
     }
   };
 
+  const onEmojiClick = (event: any, emojiObject: any) => {
+    setValue("message", getValues("message") + emojiObject.emoji);
+  };
+
+  const listener = (e: any) => {
+    setPickEmoji(false);
+  };
+
+  useEffect(() => {
+    document.body.addEventListener("click", listener);
+    return () => {
+      document.body.removeEventListener("click", listener);
+    };
+  }, []);
+
   return (
     <Box
       id="hook-form"
@@ -259,6 +281,30 @@ const RoomMessagesBottom = () => {
               >
                 <Icon as={IoImagesSharp} color="gray.500" size={6} />
               </Center>
+              {/* emoji */}
+              {/* 
+              {pickEmoji && (
+                <div
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
+                  className="absolute w-fit bottom-20 z-50"
+                >
+                  <Picker onEmojiClick={onEmojiClick} />
+                </div>
+              )}
+              <button
+                onClick={(e) => {
+                  setPickEmoji(true);
+                  e.preventDefault();
+                  e.stopPropagation();
+                }}
+                className="ml-3 flex items-center justify-center text-indigo-700 font-semibold p-3 border border-transparent text-sm  rounded-md  bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-opacity-10 hover:bg-opacity-20 mr-2"
+              >
+                🙂
+              </button>
+              */}
               <Button
                 height="full"
                 w="full"
